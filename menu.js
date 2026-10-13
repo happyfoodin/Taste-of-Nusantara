@@ -1,4 +1,4 @@
-const menuData = [
+export const menuData = [
   // Main Course
   { id: 1, nama: "Rendang Sapi", kategori: "Main Course", harga: 35000, foto: "images/rendang.jpg", deskripsi: "Daging sapi empuk dimasak lama dengan santan dan rempah khas Minang." },
   { id: 2, nama: "Nasi Goreng Kampung", kategori: "Main Course", harga: 25000, foto: "images/nasi-goreng-kampung.jpg", deskripsi: "Nasi goreng bumbu sederhana dengan telur dan ikan teri." },
@@ -25,3 +25,25 @@ const menuData = [
   { id: 19, nama: "Bika Ambon", kategori: "Dessert", harga: 15000, foto: "images/bika-ambon.jpg", deskripsi: "Kue berongga lembut beraroma pandan, oleh-oleh khas Medan." },
   { id: 20, nama: "Kue Lapis", kategori: "Dessert", harga: 8000, foto: "images/kue-lapis.jpg", deskripsi: "Kue kenyal berlapis warna-warni dengan rasa manis lembut." }
 ];
+
+export function tampilkanMenu(daftarMenu) {
+  const grid = document.getElementById("menu-grid");
+  grid.innerHTML = "";
+
+  for (const menu of daftarMenu) {
+    const card = document.createElement("article");
+    card.className = "flex flex-col overflow-hidden rounded-xl bg-white shadow-md";
+    card.innerHTML = `
+      <img src="${menu.foto}" alt="${menu.nama}" class="h-48 w-full object-cover">
+      <div class="flex flex-1 flex-col p-4">
+        <span class="text-xs font-semibold uppercase text-nusa-merah">${menu.kategori}</span>
+        <h3 class="mt-1 text-lg font-bold text-nusa-cokelat">${menu.nama}</h3>
+        <p class="mt-1 flex-1 text-sm text-gray-600">${menu.deskripsi}</p>
+        <p class="mt-3 font-semibold text-nusa-cokelat">Rp ${menu.harga.toLocaleString("id-ID")}</p>
+      </div>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+tampilkanMenu(menuData);
