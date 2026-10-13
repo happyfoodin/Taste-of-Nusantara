@@ -30,9 +30,13 @@ export function tampilkanMenu(daftarMenu) {
   const grid = document.getElementById("menu-grid");
   grid.innerHTML = "";
 
-  for (const menu of daftarMenu) {
+  const semuaCard = [];
+
+  for (let i = 0; i < daftarMenu.length; i++) {
+    const menu = daftarMenu[i];
     const card = document.createElement("article");
-    card.className = "flex flex-col overflow-hidden rounded-xl bg-white shadow-md";
+    card.className = "flex flex-col overflow-hidden rounded-xl bg-white shadow-md opacity-0 translate-y-4 transition duration-500 ease-out";
+    card.style.transitionDelay = (i * 30) + "ms";
     card.innerHTML = `
       <img src="${menu.foto}" alt="${menu.nama}" class="h-48 w-full object-cover">
       <div class="flex flex-1 flex-col p-4">
@@ -43,12 +47,16 @@ export function tampilkanMenu(daftarMenu) {
       </div>
     `;
     grid.appendChild(card);
+    semuaCard.push(card);
+  }
+
+  grid.offsetHeight;
+
+  for (const card of semuaCard) {
+    card.classList.remove("opacity-0", "translate-y-4");
   }
 }
 
-tampilkanMenu(menuData);
-
-// ===== FILTER KATEGORI =====
 const tombolFilter = document.querySelectorAll(".tombol-filter");
 
 function filterMenu(kategori) {
