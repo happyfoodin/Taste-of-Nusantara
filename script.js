@@ -45,8 +45,3 @@ function tandaiLinkAktif() {
 }
 
 window.addEventListener("scroll", tandaiLinkAktif);
-
-
-// ---------- 4. JAVASCRIPT ANGGOTA LAIN ----------
-// Tulis kode kalian di bawah sini, kasih komentar nama bagiannya
-// (filter menu, pesanan, validasi form reservasi, modal gallery, dll)
