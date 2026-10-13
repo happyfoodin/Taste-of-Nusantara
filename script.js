@@ -1,0 +1,68 @@
+// ==========================================================
+// TASTE OF NUSANTARA - script.js
+// Isi file ini:
+// 1. Navbar mobile (buka/tutup menu)
+// 2. Tahun otomatis di footer
+// 3. Link navbar aktif saat scroll
+// 4. JavaScript anggota lain (tulis di bagian paling bawah)
+// ==========================================================
+
+
+// ---------- 1. NAVBAR MOBILE ----------
+const tombolMenu = document.getElementById("tombol-menu");
+const daftarMenu = document.getElementById("daftar-menu");
+
+function toggleMenu() {
+  // hidden = disembunyikan, flex = ditampilkan
+  daftarMenu.classList.toggle("hidden");
+  daftarMenu.classList.toggle("flex");
+}
+
+tombolMenu.addEventListener("click", toggleMenu);
+
+// kalau salah satu link diklik, menu mobile ditutup lagi
+const linkMenu = document.querySelectorAll("#daftar-menu a");
+
+for (let i = 0; i < linkMenu.length; i++) {
+  linkMenu[i].addEventListener("click", function () {
+    daftarMenu.classList.add("hidden");
+    daftarMenu.classList.remove("flex");
+  });
+}
+
+
+// ---------- 2. TAHUN OTOMATIS DI FOOTER ----------
+const elemenTahun = document.getElementById("tahun");
+const tahunSekarang = new Date().getFullYear();
+elemenTahun.textContent = tahunSekarang;
+
+
+// ---------- 3. LINK NAVBAR AKTIF SAAT SCROLL ----------
+const semuaSection = document.querySelectorAll("main section");
+
+function tandaiLinkAktif() {
+  let idAktif = "";
+
+  for (let i = 0; i < semuaSection.length; i++) {
+    const posisiAtas = semuaSection[i].offsetTop - 120;
+    if (window.scrollY >= posisiAtas) {
+      idAktif = semuaSection[i].id;
+    }
+  }
+
+  for (let j = 0; j < linkMenu.length; j++) {
+    const href = linkMenu[j].getAttribute("href");
+    if (href === "#" + idAktif) {
+      linkMenu[j].classList.add("text-nusa-emas");
+    } else {
+      linkMenu[j].classList.remove("text-nusa-emas");
+    }
+  }
+}
+
+window.addEventListener("scroll", tandaiLinkAktif);
+
+
+// ---------- 4. JAVASCRIPT ANGGOTA LAIN ----------
+// Tulis kode kalian di bawah sini, kasih komentar nama bagiannya
+// (filter menu, pesanan, validasi form reservasi, modal gallery, dll)

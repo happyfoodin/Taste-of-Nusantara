@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Taste of Nusantara - restoran masakan tradisional Indonesia">
+  <title>Taste of Nusantara | Restoran Masakan Tradisional Indonesia</title>
+
+  <!-- Font: Playfair Display (judul) dan Poppins (isi) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS (sudah termasuk Tailwind) -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- ===================== HEADER + NAVBAR ===================== -->
+  <header class="sticky top-0 z-50 bg-nusa-cokelat text-nusa-krem shadow-md">
+    <nav class="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-nusa-emas font-judul text-xl font-bold text-nusa-cokelat">N</span>
+        <span class="font-judul text-xl font-bold">Taste of Nusantara</span>
+      </a>
+
+      <!-- Tombol hamburger (hanya tampil di smartphone) -->
+      <button id="tombol-menu" type="button" class="rounded border border-nusa-emas px-3 py-1 text-sm md:hidden" aria-label="Buka menu">
+        Menu
+      </button>
+
+      <!-- Daftar link navbar -->
+      <ul id="daftar-menu" class="absolute left-0 top-full hidden w-full flex-col gap-4 bg-nusa-cokelat px-4 py-4 md:static md:flex md:w-auto md:flex-row md:gap-8 md:p-0">
+        <li><a href="#home" class="font-medium hover:text-nusa-emas">Beranda</a></li>
+        <li><a href="#menu" class="font-medium hover:text-nusa-emas">Menu</a></li>
+        <li><a href="#pesanan" class="font-medium hover:text-nusa-emas">Pesanan</a></li>
+        <li><a href="#reservasi" class="font-medium hover:text-nusa-emas">Reservasi</a></li>
+        <li><a href="#gallery" class="font-medium hover:text-nusa-emas">Gallery</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- ===================== LANDING PAGE / HERO ===================== -->
+    <section id="home" class="relative flex min-h-[85vh] items-center overflow-hidden bg-nusa-cokelat">
+
+      <!-- Foto makanan (taruh file di folder images/hero.jpg) -->
+      <img src="images/hero.jpg" alt="Hidangan khas Nusantara di atas meja"
+           class="absolute inset-0 h-full w-full object-cover"
+           onerror="this.style.display='none'">
+
+      <!-- Lapisan gelap supaya tulisan terbaca -->
+      <div class="absolute inset-0 bg-nusa-cokelat/70"></div>
+
+      <div class="relative z-10 mx-auto max-w-6xl px-4 py-20 text-center text-white sm:px-6">
+        <p class="animasi-muncul mb-3 text-sm font-medium uppercase tracking-widest text-nusa-emas">
+          Restoran Masakan Tradisional Indonesia
+        </p>
+        <h1 class="animasi-muncul text-4xl font-bold sm:text-5xl md:text-6xl">
+          Taste of Nusantara
+        </h1>
+        <p class="animasi-muncul-2 mx-auto mt-4 max-w-2xl text-base text-nusa-krem sm:text-lg">
+          Cita rasa tradisional dari Sabang sampai Merauke, disajikan hangat untuk Anda dan keluarga.
+        </p>
+
+        <div class="animasi-muncul-3 mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="#menu" class="rounded-full bg-nusa-emas px-8 py-3 font-semibold text-nusa-cokelat transition hover:bg-nusa-merah hover:text-white">
+            Lihat Menu
+          </a>
+          <a href="#reservasi" class="rounded-full border-2 border-white px-8 py-3 font-semibold text-white transition hover:bg-white hover:text-nusa-cokelat">
+            Reservasi Meja
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== BAGIAN ANGGOTA LAIN =====================
+         Section di bawah ini masih kosong (placeholder).
+         Anggota yang bertugas silakan isi di dalam section masing-masing,
+         jangan ubah id-nya karena dipakai oleh link navbar. -->
+
+    <!-- OUR MENU (filter kategori, card menu, tombol Pesan) -->
+    <section id="menu" class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <h2 class="text-center text-3xl font-bold text-nusa-merah">Our Menu</h2>
+      <div class="garis-judul"></div>
+      <!-- TODO anggota menu: isi di sini -->
+    </section>
+
+    <!-- PESANAN ANDA (daftar menu dipilih, counter, total) -->
+    <section id="pesanan" class="bg-white px-4 py-16 sm:px-6">
+      <div class="mx-auto max-w-6xl">
+        <h2 class="text-center text-3xl font-bold text-nusa-merah">Pesanan Anda</h2>
+        <div class="garis-judul"></div>
+        <!-- TODO anggota pesanan: isi di sini -->
+      </div>
+    </section>
+
+    <!-- RESERVASI MEJA (form + validasi) -->
+    <section id="reservasi" class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <h2 class="text-center text-3xl font-bold text-nusa-merah">Reservasi Meja</h2>
+      <div class="garis-judul"></div>
+      <!-- TODO anggota reservasi: isi di sini -->
+    </section>
+
+    <!-- GALLERY MAKANAN (gambar + modal) -->
+    <section id="gallery" class="bg-white px-4 py-16 sm:px-6">
+      <div class="mx-auto max-w-6xl">
+        <h2 class="text-center text-3xl font-bold text-nusa-merah">Gallery</h2>
+        <div class="garis-judul"></div>
+        <!-- TODO anggota gallery: isi di sini -->
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-nusa-cokelat text-nusa-krem">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
+
+      <!-- Tentang & alamat -->
+      <div>
+        <h3 class="mb-3 text-xl font-bold text-nusa-emas">Taste of Nusantara</h3>
+        <p class="text-sm leading-relaxed">
+          Menyajikan masakan tradisional Indonesia dengan bumbu rempah asli.
+        </p>
+        <address class="mt-3 text-sm not-italic leading-relaxed">
+          Jl. Contoh No. 10, Medan,<br>
+          Sumatera Utara 20155
+        </address>
+      </div>
+
+      <!-- Jam buka -->
+      <div>
+        <h3 class="mb-3 text-xl font-bold text-nusa-emas">Jam Buka</h3>
+        <ul class="space-y-1 text-sm">
+          <li>Senin - Jumat : 10.00 - 22.00</li>
+          <li>Sabtu - Minggu : 09.00 - 23.00</li>
+        </ul>
+      </div>
+
+      <!-- Kontak & media sosial -->
+      <div>
+        <h3 class="mb-3 text-xl font-bold text-nusa-emas">Kontak</h3>
+        <ul class="space-y-1 text-sm">
+          <li>Telepon: 0812-3456-7890</li>
+          <li>Email: halo@tasteofnusantara.id</li>
+        </ul>
+        <ul class="mt-4 flex gap-4 text-sm">
+          <li><a href="#" class="hover:text-nusa-emas">Instagram</a></li>
+          <li><a href="#" class="hover:text-nusa-emas">Facebook</a></li>
+          <li><a href="#" class="hover:text-nusa-emas">TikTok</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-nusa-krem/20 py-4 text-center text-xs">
+      &copy; <span id="tahun"></span> Taste of Nusantara. Hak cipta dilindungi.
+    </div>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
