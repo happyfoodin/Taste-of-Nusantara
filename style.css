@@ -1,7 +1,5 @@
 @import "tailwindcss";
 @theme {
-
-/* Font */
   --font-judul: "Playfair Display", serif;
   --font-isi: "Poppins", sans-serif;
 }
