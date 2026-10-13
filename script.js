@@ -1,4 +1,3 @@
-// 1. NAVBAR MOBILE 
 const tombolMenu = document.getElementById("tombol-menu");
 const daftarMenu = document.getElementById("daftar-menu");
 
@@ -18,18 +17,10 @@ for (let i = 0; i < linkMenu.length; i++) {
   });
 }
 
-
-// 2. TAHUN OTOMATIS DI FOOTER 
 const elemenTahun = document.getElementById("tahun");
 const tahunSekarang = new Date().getFullYear();
 elemenTahun.textContent = tahunSekarang;
 
-
-// 3. LINK NAVBAR AKTIF SAAT SCROLL 
-const elemenTahun = document.getElementById("tahun");
-const tahunSekarang = new Date().getFullYear();
-elemenTahun.textContent = tahunSekarang;
- 
 const semuaSection = document.querySelectorAll("main section");
 
 function tandaiLinkAktif() {
@@ -51,5 +42,4 @@ function tandaiLinkAktif() {
   }
 }
 
-window.addEventListener("scroll", tandaiLinkAktif);
 window.addEventListener("scroll", tandaiLinkAktif);
