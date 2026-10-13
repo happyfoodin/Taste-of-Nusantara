@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@theme {
+  --font-judul: "Playfair Display", serif;
+  --font-isi: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-isi);
+  background-color: var(--color-nusa-krem);
+  color: var(--color-nusa-cokelat);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-judul);
+}
+
+   scroll-margin-top: 5rem;
+}
+
+.garis-judul {
+  width: 5rem;
+  height: 4px;
+  margin: 0.75rem auto 0;
+  border-radius: 9999px;
+  background-color: var(--color-nusa-emas);
+}
+
+@keyframes muncul-dari-bawah {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animasi-muncul {
+  animation: muncul-dari-bawah 1s ease-out both;
+}
+
+.animasi-muncul-2 {
+  animation: muncul-dari-bawah 1s ease-out 0.3s both;
+}
+
+.animasi-muncul-3 {
+  animation: muncul-dari-bawah 1s ease-out 0.6s both;
+}
