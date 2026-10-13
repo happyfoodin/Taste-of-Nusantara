@@ -26,11 +26,14 @@ elemenTahun.textContent = tahunSekarang;
 
 
 // 3. LINK NAVBAR AKTIF SAAT SCROLL 
+const elemenTahun = document.getElementById("tahun");
+const tahunSekarang = new Date().getFullYear();
+elemenTahun.textContent = tahunSekarang;
+ 
 const semuaSection = document.querySelectorAll("main section");
 
 function tandaiLinkAktif() {
   let idAktif = "";
-
   for (let i = 0; i < semuaSection.length; i++) {
     const posisiAtas = semuaSection[i].offsetTop - 120;
     if (window.scrollY >= posisiAtas) {
@@ -48,4 +51,5 @@ function tandaiLinkAktif() {
   }
 }
 
+window.addEventListener("scroll", tandaiLinkAktif);
 window.addEventListener("scroll", tandaiLinkAktif);

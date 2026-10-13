@@ -1,31 +1,9 @@
 @import "tailwindcss";
-
-/* ==========================================================
-   TASTE OF NUSANTARA - style.css
-   Isi file ini:
-   1. Konfigurasi tema Tailwind (warna & font)
-   2. CSS dasar
-   3. Animasi hero
-   4. CSS tambahan dari anggota lain (tulis di bagian paling bawah)
-   ========================================================== */
-
-
-/* ---------- 1. TEMA TAILWIND (palet warna & font) ---------- */
 @theme {
-  /* Warna khas Nusantara */
-  --color-nusa-merah: #8b2e1f;    /* merah bata / cabai */
-  --color-nusa-emas: #d99a1e;     /* kuning kunyit */
-  --color-nusa-hijau: #3f6b3a;    /* hijau daun pisang */
-  --color-nusa-krem: #fff6e5;     /* krem, warna latar */
-  --color-nusa-cokelat: #3b2415;  /* cokelat tua rempah */
-
-  /* Font */
   --font-judul: "Playfair Display", serif;
   --font-isi: "Poppins", sans-serif;
 }
 
-
-/* ---------- 2. CSS DASAR ---------- */
 html {
   scroll-behavior: smooth;
 }
@@ -42,12 +20,9 @@ h3 {
   font-family: var(--font-judul);
 }
 
-/* supaya judul section tidak ketutup navbar yang sticky */
-section {
-  scroll-margin-top: 5rem;
+   scroll-margin-top: 5rem;
 }
 
-/* garis hiasan emas di bawah judul section */
 .garis-judul {
   width: 5rem;
   height: 4px;
@@ -56,8 +31,6 @@ section {
   background-color: var(--color-nusa-emas);
 }
 
-
-/* ---------- 3. ANIMASI HERO ---------- */
 @keyframes muncul-dari-bawah {
   from {
     opacity: 0;
@@ -80,7 +53,3 @@ section {
 .animasi-muncul-3 {
   animation: muncul-dari-bawah 1s ease-out 0.6s both;
 }
-
-
-/* ---------- 4. CSS TAMBAHAN ANGGOTA LAIN ---------- */
-/* Tulis CSS kalian di bawah sini, kasih komentar nama bagiannya */
