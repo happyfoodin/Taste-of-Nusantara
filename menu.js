@@ -47,3 +47,21 @@ export function tampilkanMenu(daftarMenu) {
 }
 
 tampilkanMenu(menuData);
+
+// ===== FILTER KATEGORI =====
+const tombolFilter = document.querySelectorAll(".tombol-filter");
+
+function filterMenu(kategori) {
+  if (kategori === "All") {
+    tampilkanMenu(menuData);
+  } else {
+    const hasil = menuData.filter((menu) => menu.kategori === kategori);
+    tampilkanMenu(hasil);
+  }
+}
+
+for (const tombol of tombolFilter) {
+  tombol.addEventListener("click", () => {
+    filterMenu(tombol.dataset.kategori);
+  });
+}
