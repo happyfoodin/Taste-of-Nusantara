@@ -34,7 +34,7 @@ export const menuData = [
   { id: 30, nama: "Lapis Legit", kategori: "Hidangan Penutup", harga: 18000, foto: "images/lapis-legit.jpg", deskripsi: "Kue tradisional berlapis-lapis dengan aroma rempah dan tekstur lembut." }
 ];
 
-export function tampilkanMenu(daftarMenu) {
+export function tampilkanMenu(daftarMenu, pakaiAnimasi = true) {
   const grid = document.getElementById("menu-grid");
   grid.innerHTML = "";
 
@@ -43,7 +43,10 @@ export function tampilkanMenu(daftarMenu) {
   for (let i = 0; i < daftarMenu.length; i++) {
     const menu = daftarMenu[i];
     const card = document.createElement("article");
-    card.className = "flex flex-col overflow-hidden rounded-xl bg-white shadow-md opacity-0 translate-y-4 transition duration-500 ease-out";
+    card.className = "flex flex-col overflow-hidden rounded-xl bg-white shadow-md transition duration-500 ease-out";
+    if (pakaiAnimasi) {
+      card.classList.add("opacity-0", "translate-y-4");
+    }
     card.style.transitionDelay = (i * 30) + "ms";
     card.innerHTML = `
       <img src="${menu.foto}" alt="${menu.nama}" class="h-48 w-full object-cover">
@@ -58,26 +61,69 @@ export function tampilkanMenu(daftarMenu) {
     semuaCard.push(card);
   }
 
+  if (pakaiAnimasi) {
   grid.offsetHeight;
 
   for (const card of semuaCard) {
     card.classList.remove("opacity-0", "translate-y-4");
   }
 }
+}
+
+const JUMLAH_AWAL = 4;
+let kategoriAktif = "All";
+let tampilSemua = false;
+let pilihanAcak = [];
 
 const tombolFilter = document.querySelectorAll(".tombol-filter");
+const tombolLihatSemua = document.getElementById("tombol-lihat-semua");
 
-function filterMenu(kategori) {
-  if (kategori === "All") {
-    tampilkanMenu(menuData);
-  } else {
-    const hasil = menuData.filter((menu) => menu.kategori === kategori);
-    tampilkanMenu(hasil);
+function ambilAcak(daftar, jumlah) {
+  const salinan = [...daftar];
+  for (let i = salinan.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [salinan[i], salinan[j]] = [salinan[j], salinan[i]];
   }
+  return salinan.slice(0, jumlah).sort((a, b) => a.id - b.id);
+}
+
+function tandaiTombolAktif() {
+  for (const tombol of tombolFilter) {
+    const aktif = tombol.dataset.kategori === kategoriAktif;
+    tombol.classList.toggle("bg-nusa-emas", aktif);
+    tombol.classList.toggle("text-nusa-cokelat", aktif);
+  }
+}
+
+function perbaruiMenu(pakaiAnimasi, acakUlang) {
+  let hasil = menuData;
+  if (kategoriAktif !== "All") {
+    hasil = menuData.filter((menu) => menu.kategori === kategoriAktif);
+  }
+
+  if (acakUlang) {
+    pilihanAcak = ambilAcak(hasil, JUMLAH_AWAL);
+  }
+
+  const adaSisa = hasil.length > JUMLAH_AWAL;
+  tampilkanMenu(tampilSemua ? hasil : pilihanAcak, pakaiAnimasi);
+
+  tombolLihatSemua.classList.toggle("hidden", !adaSisa);
+  tombolLihatSemua.textContent = tampilSemua ? "Tampilkan Lebih Sedikit" : "Lihat Semua Menu";
+  tandaiTombolAktif();
 }
 
 for (const tombol of tombolFilter) {
   tombol.addEventListener("click", () => {
-    filterMenu(tombol.dataset.kategori);
+    kategoriAktif = tombol.dataset.kategori;
+    tampilSemua = false;
+    perbaruiMenu(true, true);
   });
 }
+
+tombolLihatSemua.addEventListener("click", () => {
+  tampilSemua = !tampilSemua;
+  perbaruiMenu(false, false);
+});
+
+perbaruiMenu(false, true);
