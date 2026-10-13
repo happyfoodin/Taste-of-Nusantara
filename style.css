@@ -2,6 +2,11 @@
 @theme {
   --font-judul: "Playfair Display", serif;
   --font-isi: "Poppins", sans-serif;
+
+  --color-nusa-krem: #fdf6e3;
+  --color-nusa-cokelat: #4a2c1a;
+  --color-nusa-emas: #d4a017;
+  --color-nusa-merah: #a52a2a;
 }
 
 html {
@@ -20,6 +25,7 @@ h3 {
   font-family: var(--font-judul);
 }
 
+section {
    scroll-margin-top: 5rem;
 }
 
