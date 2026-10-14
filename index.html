@@ -79,6 +79,21 @@
       <div class="mx-auto max-w-6xl">
         <h2 class="text-center text-3xl font-bold text-nusa-merah">Pesanan Anda</h2>
         <div class="garis-judul"></div>
+
+        <div class="mx-auto mt-8 max-w-3xl rounded-2xl border border-nusa-emas/40 bg-nusa-krem p-4 shadow-sm sm:p-6">
+          <p class="mb-4 text-sm text-gray-600">Menu yang Anda pilih akan muncul di sini.</p>
+          <div id="daftar-pesanan" class="space-y-3" aria-live="polite">
+            <p id="pesanan-kosong" class="rounded-lg bg-white p-5 text-center text-sm text-gray-500">
+              Keranjang masih kosong. Silakan pilih menu terlebih dahulu.
+            </p>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between border-t border-nusa-emas/40 pt-4">
+            <span class="text-lg font-semibold text-nusa-cokelat">Total Harga</span>
+            <strong id="total-harga" class="text-xl font-bold text-nusa-merah">Rp 0</strong>
+          </div>
+          <p class="mt-2 text-xs text-gray-500">Jumlah pesanan dapat diubah dengan tombol + dan −.</p>
+        </div>
       </div>
     </section>
     <section id="reservasi" class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -131,5 +146,6 @@
 
   <script type="module" src="./menu.js"></script>
   <script type="module" src="./script.js"></script>
+  <script type="module" src="./pesanan.js"></script>
 </body>
 </html>

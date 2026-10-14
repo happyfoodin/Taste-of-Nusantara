@@ -55,6 +55,15 @@ export function tampilkanMenu(daftarMenu, pakaiAnimasi = true) {
         <h3 class="mt-1 text-lg font-bold text-nusa-cokelat">${menu.nama}</h3>
         <p class="mt-1 flex-1 text-sm text-gray-600">${menu.deskripsi}</p>
         <p class="mt-3 font-semibold text-nusa-cokelat">Rp ${menu.harga.toLocaleString("id-ID")}</p>
+        <button
+          type="button"
+          data-pesan-id="${menu.id}"
+          class="mt-4 w-full rounded-full bg-nusa-cokelat px-4 py-2 font-semibold text-nusa-krem transition hover:bg-nusa-merah"
+          aria-label="Pesan ${menu.nama}"
+        >
+          Pesan
+        </button>
+
       </div>
     `;
     grid.appendChild(card);
