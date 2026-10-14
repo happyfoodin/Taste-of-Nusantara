@@ -22,6 +22,7 @@ const kurangiGerak = window.matchMedia("(prefers-reduced-motion: reduce)").match
 
 let tampilSemua = false;
 let modalTerbuka = false;
+let elemenSebelumModal = null;
 let timerGanti = null;
 
 function ambilAcak(jumlah) {
@@ -96,6 +97,8 @@ function bukaModal(nomor) {
   const item = galeriData[nomor];
   if (!item) return;
 
+  elemenSebelumModal = document.activeElement;
+
   modalFoto.src = item.src;
   modalFoto.alt = item.keterangan;
   modalKeterangan.textContent = item.keterangan;
@@ -103,14 +106,21 @@ function bukaModal(nomor) {
   modalGambar.classList.remove("hidden");
   modalGambar.classList.add("flex");
   modalTerbuka = true;
+  document.body.classList.add("overflow-hidden");
   hentikanPutar();
+  tombolTutupModal.focus();
 }
 
 function tutupModal() {
   modalGambar.classList.add("hidden");
   modalGambar.classList.remove("flex");
   modalTerbuka = false;
+  document.body.classList.remove("overflow-hidden");
   mulaiPutar();
+
+  if (elemenSebelumModal && document.contains(elemenSebelumModal)) {
+    elemenSebelumModal.focus();
+  }
 }
 
 galeriGrid.addEventListener("click", function (event) {
@@ -120,6 +130,25 @@ galeriGrid.addEventListener("click", function (event) {
 });
 
 tombolTutupModal.addEventListener("click", tutupModal);
+
+modalGambar.addEventListener("click", function (event) {
+  if (event.target === modalGambar) {
+    tutupModal();
+  }
+});
+
+document.addEventListener("keydown", function (event) {
+  if (!modalTerbuka) return;
+
+  if (event.key === "Escape") {
+    tutupModal();
+  }
+
+  if (event.key === "Tab") {
+    event.preventDefault();
+    tombolTutupModal.focus();
+  }
+});
 
 // tombol lihat selengkapnya
 tombolGaleriSemua.addEventListener("click", function () {
