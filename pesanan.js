@@ -5,10 +5,33 @@ const keranjang = new Map();
 const gridMenu = document.getElementById("menu-grid");
 const daftarPesanan = document.getElementById("daftar-pesanan");
 const totalHargaElement = document.getElementById("total-harga");
+const totalItemElement = document.getElementById("total-item");
 
 function formatRupiah(angka) {
   return "Rp " + angka.toLocaleString("id-ID");
 }
+
+function tampilkanNotifikasi(pesan) {
+  let notifikasi = document.getElementById("notifikasi-pesanan");
+
+  if (!notifikasi) {
+    notifikasi = document.createElement("div");
+    notifikasi.id = "notifikasi-pesanan";
+    notifikasi.className =
+      "fixed right-5 top-5 z-50 rounded-xl bg-green-600 px-5 py-3 text-white shadow-lg";
+    notifikasi.setAttribute("role", "status");
+    document.body.appendChild(notifikasi);
+  }
+
+  notifikasi.textContent = pesan;
+  notifikasi.classList.remove("hidden");
+
+  clearTimeout(notifikasi.timer);
+  notifikasi.timer = setTimeout(() => {
+    notifikasi.classList.add("hidden");
+  }, 2500);
+}
+
 
 function tambahPesanan(idMenu) {
   const menu = menuData.find((item) => item.id === idMenu);
@@ -19,6 +42,8 @@ function tambahPesanan(idMenu) {
   keranjang.set(idMenu, jumlahSekarang + 1);
 
   tampilkanPesanan();
+
+  tampilkanNotifikasi(`${menu.nama} berhasil ditambahkan ke pesanan!`);
 }
 
 function ubahJumlah(idMenu, perubahan) {
@@ -31,6 +56,16 @@ function ubahJumlah(idMenu, perubahan) {
   }
 
   tampilkanPesanan();
+}
+
+function kosongkanMenu(idMenu) {
+  const menu = menuData.find((item) => item.id === idMenu);
+
+  if (!menu || !keranjang.has(idMenu)) return;
+
+  keranjang.delete(idMenu);
+  tampilkanPesanan();
+  tampilkanNotifikasi(`${menu.nama} dihapus dari pesanan.`);
 }
 
 function tampilkanPesanan() {
@@ -62,6 +97,9 @@ function tampilkanPesanan() {
         <button type="button" data-jumlah-ubah="1" data-menu-id="${menu.id}"
           class="flex h-9 w-9 items-center justify-center rounded-full bg-nusa-cokelat text-lg font-bold text-white hover:bg-nusa-merah"
           aria-label="Tambah ${menu.nama}">+</button>
+
+        <button type="button" data-kosongkan-menu="${menu.id}"
+          class="rounded-full border border-red-500 px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-500 hover:text-white">Kosongkan</button>
       </div>
     `;
     daftarPesanan.appendChild(baris);
@@ -76,6 +114,9 @@ function tampilkanPesanan() {
   }
 
   totalHargaElement.textContent = formatRupiah(totalHarga);
+  if (totalItemElement) {
+  totalItemElement.textContent = totalItem;
+}
 }
 
 gridMenu.addEventListener("click", (event) => {
@@ -88,11 +129,20 @@ gridMenu.addEventListener("click", (event) => {
 });
 
 daftarPesanan.addEventListener("click", (event) => {
+  const tombolKosongkan = event.target.closest("[data-kosongkan-menu]");
+
+  if (tombolKosongkan) {
+    const idMenu = Number(tombolKosongkan.dataset.kosongkanMenu);
+    kosongkanMenu(idMenu);
+    return;
+  }
+
   const tombolUbah = event.target.closest("[data-jumlah-ubah]");
   if (!tombolUbah) return;
 
   const idMenu = Number(tombolUbah.dataset.menuId);
   const perubahan = Number(tombolUbah.dataset.jumlahUbah);
+
   ubahJumlah(idMenu, perubahan);
 });
 
