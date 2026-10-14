@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!-- header -->
   <header class="sticky top-0 z-50 bg-nusa-cokelat text-nusa-krem shadow-md">
     <nav class="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
       <a href="#home" class="flex items-center gap-2">
@@ -22,6 +23,8 @@
       <button id="tombol-menu" type="button" class="rounded border border-nusa-emas px-3 py-1 text-sm md:hidden" aria-label="Buka menu">
         Menu
       </button>
+
+      <!-- navbar -->
       <ul id="daftar-menu" class="absolute left-0 top-full hidden w-full flex-col gap-4 bg-nusa-cokelat px-4 py-4 md:static md:flex md:w-auto md:flex-row md:gap-8 md:p-0">
         <li><a href="#home" class="font-medium hover:text-nusa-emas">Beranda</a></li>
         <li><a href="#menu" class="font-medium hover:text-nusa-emas">Menu</a></li>
@@ -33,6 +36,7 @@
   </header>
 
   <main>
+    <!-- hero section -->
     <section id="home" class="relative flex min-h-[85vh] items-center overflow-hidden bg-nusa-cokelat">
       <img src="images/hero.jpg" alt="Hidangan khas Nusantara di atas meja"
            class="absolute inset-0 h-full w-full object-cover"
@@ -59,6 +63,8 @@
         </div>
       </div>
     </section>
+
+    <!-- menu section -->
     <section id="menu" class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <h2 class="text-center text-3xl font-bold text-nusa-merah">Menu</h2>
       <div class="garis-judul"></div>
@@ -75,6 +81,8 @@
         <button id="tombol-lihat-semua" type="button" class="cursor-pointer rounded-full border border-nusa-emas px-6 py-2 text-sm font-medium transition duration-300 hover:bg-nusa-emas hover:text-nusa-cokelat">Lihat Semua Menu</button>
       </div>
     </section>
+
+    <!-- pesanan section -->
     <section id="pesanan" class="bg-white px-4 py-16 sm:px-6">
       <div class="mx-auto max-w-6xl">
         <h2 class="text-center text-3xl font-bold text-nusa-merah">Pesanan Anda</h2>
@@ -86,32 +94,34 @@
             <p id="pesanan-kosong" class="rounded-lg bg-white p-5 text-center text-sm text-gray-500">
               Keranjang masih kosong. Silakan pilih menu terlebih dahulu.
             </p>
-          </div>
+        </div>
           
-<div class="mt-6 border-t border-nusa-emas/40 pt-4">
-  <div class="flex flex-wrap items-center justify-between gap-3">
-    <span class="text-lg font-semibold text-nusa-cokelat">
-      Total Item
-    </span>
-    <strong id="total-item" class="text-lg font-bold text-nusa-cokelat">
-      0
-    </strong>
-  </div>
+        <div class="mt-6 border-t border-nusa-emas/40 pt-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <span class="text-lg font-semibold text-nusa-cokelat">
+              Total Item
+            </span>
+            <strong id="total-item" class="text-lg font-bold text-nusa-cokelat">
+              0
+            </strong>
+          </div>
 
-  <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
-    <span class="text-lg font-semibold text-nusa-cokelat">
-      Total Harga
-    </span>
-    <strong id="total-harga" class="text-xl font-bold text-nusa-merah">
-      Rp 0
-    </strong>
-  </div>
-</div>
+          <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+            <span class="text-lg font-semibold text-nusa-cokelat">
+              Total Harga
+            </span>
+            <strong id="total-harga" class="text-xl font-bold text-nusa-merah">
+              Rp 0
+            </strong>
+          </div>
+        </div>
 
           <p class="mt-2 text-xs text-gray-500">Jumlah pesanan dapat diubah dengan tombol + dan −.</p>
         </div>
       </div>
     </section>
+
+    <!-- reservasi section -->
     <section id="reservasi" class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <h2 class="text-center text-3xl font-bold text-nusa-merah">Reservasi Meja</h2>
       <div class="garis-judul"></div>
@@ -168,6 +178,8 @@
     </section>
 
   </main>
+
+  <!-- footer -->
   <footer class="bg-nusa-cokelat text-nusa-krem">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
       <div>
@@ -204,6 +216,7 @@
     </div>
   </footer>
 
+  <!-- modal gambar -->
   <div id="modal-gambar" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4"
        role="dialog" aria-modal="true" aria-label="Pratinjau foto">
     <div class="relative w-full max-w-3xl">
@@ -215,6 +228,7 @@
     </div>
   </div>
 
+  <!-- script -->
   <script type="module" src="./menu.js"></script>
   <script type="module" src="./script.js"></script>
   <script type="module" src="./pesanan.js"></script>
