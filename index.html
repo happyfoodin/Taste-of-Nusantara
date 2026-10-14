@@ -204,6 +204,17 @@
     </div>
   </footer>
 
+  <div id="modal-gambar" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4"
+       role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+    <div class="relative w-full max-w-3xl">
+      <button id="tombol-tutup-modal" type="button"
+              class="absolute -right-3 -top-3 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-nusa-emas text-2xl font-bold text-nusa-cokelat hover:bg-white"
+              aria-label="Tutup foto">&times;</button>
+      <img id="modal-foto" alt="" class="max-h-[80vh] w-full rounded-xl object-contain">
+      <p id="modal-keterangan" class="mt-3 text-center font-judul text-lg text-white"></p>
+    </div>
+  </div>
+
   <script type="module" src="./menu.js"></script>
   <script type="module" src="./script.js"></script>
   <script type="module" src="./pesanan.js"></script>
