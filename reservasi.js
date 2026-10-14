@@ -49,10 +49,25 @@ function validasiTanggal() {
   return true;
 }
 
+function ambilJamBuka(tanggal) {
+  const hari = new Date(tanggal + "T00:00:00").getDay();
+  if (hari === 0 || hari === 6) {
+    return { buka: "09:00", tutup: "23:00", teks: "Sabtu - Minggu 09.00 - 23.00" };
+  }
+  return { buka: "10:00", tutup: "22:00", teks: "Senin - Jumat 10.00 - 22.00" };
+}
+
 function validasiJam() {
   if (inputJam.value === "") {
     tampilkanError(inputJam, "Jam tidak boleh kosong.");
     return false;
+  }
+  if (inputTanggal.value !== "") {
+    const jamBuka = ambilJamBuka(inputTanggal.value);
+    if (inputJam.value < jamBuka.buka || inputJam.value >= jamBuka.tutup) {
+      tampilkanError(inputJam, "Di luar jam buka (" + jamBuka.teks + ").");
+      return false;
+    }
   }
   const sekarang = new Date();
   const jamSekarang =
@@ -117,6 +132,11 @@ formReservasi.addEventListener("submit", function (e) {
 });
 
 inputNama.addEventListener("input", validasiNama);
-inputTanggal.addEventListener("change", validasiTanggal);
+inputTanggal.addEventListener("change", function () {
+  validasiTanggal();
+  if (inputJam.value !== "") {
+    validasiJam();
+  }
+});
 inputJam.addEventListener("change", validasiJam);
 inputJumlah.addEventListener("input", validasiJumlah);
